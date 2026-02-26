@@ -1,0 +1,32 @@
+---
+layout: default
+title: Arquivo
+permalink: /arquivo/
+---
+
+<div class="page-header">
+  <h1>// ARQUIVO COMPLETO</h1>
+  <span class="subtitle">todos os posts</span>
+</div>
+
+<ul class="post-list">
+  {% for post in site.posts %}
+    <li class="post-item">
+      <div class="post-date-block">
+        <span class="post-date-day">{{ post.date | date: "%d" }}</span>
+        <span class="post-date-month">{{ post.date | date: "%b" }}</span>
+      </div>
+      <div class="post-content-block">
+        {% if post.categories.first %}
+          <span class="post-cat">{{ post.categories.first }}</span>
+        {% endif %}
+        <a href="{{ post.url | relative_url }}" class="post-title">{{ post.title }}</a>
+        <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
+        <div class="post-meta">
+          {% if post.read_time %}<span>{{ post.read_time }} de leitura</span>{% endif %}
+          <a href="{{ post.url | relative_url }}" class="read-more">Ler mais »</a>
+        </div>
+      </div>
+    </li>
+  {% endfor %}
+</ul>

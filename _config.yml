@@ -1,0 +1,13 @@
+title: "Bugs de Fernando Nahopa"
+description: "pensamentos não filtrados"
+author: "Fernando Nahopa"
+url: "https://fernandonahopa.github.io"
+baseurl: "/blog-nahopa"
+
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

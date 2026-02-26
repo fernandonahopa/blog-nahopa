@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+<article class="post-full">
+  <button class="back-btn" onclick="history.back()">« Voltar</button>
+
+  <header class="post-full-header">
+    {% if page.categories.first %}
+      <span class="post-cat">{{ page.categories.first }}</span>
+    {% endif %}
+    <h1 class="post-full-title">{{ page.title }}</h1>
+    <div class="post-full-meta">
+      <span>{{ page.date | date: "%d %b %Y" }}</span>
+      {% if page.read_time %}<span>{{ page.read_time }} de leitura</span>{% endif %}
+    </div>
+  </header>
+
+  <div class="post-full-body">
+    {{ content }}
+  </div>
+
+  <div class="post-nav">
+    {% if page.previous.url %}
+      <a href="{{ page.previous.url | relative_url }}" class="post-nav-link">« {{ page.previous.title }}</a>
+    {% endif %}
+    {% if page.next.url %}
+      <a href="{{ page.next.url | relative_url }}" class="post-nav-link post-nav-next">{{ page.next.title }} »</a>
+    {% endif %}
+  </div>
+</article>

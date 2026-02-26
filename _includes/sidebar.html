@@ -1,0 +1,37 @@
+<!-- SOBRE O AUTOR -->
+<div class="sidebar-box">
+  <div class="sidebar-box-header"><span class="sym">></span> SOBRE O AUTOR</div>
+  <div class="sidebar-box-content">
+    <p>{{ site.author }}. Escrevo o que penso, penso o que escrevo. Às vezes fico calado, mas raramente.</p>
+  </div>
+</div>
+
+<!-- ASSUNTOS -->
+<div class="sidebar-box">
+  <div class="sidebar-box-header"><span class="sym">></span> ASSUNTOS</div>
+  <div class="sidebar-box-content">
+    <ul class="tag-list">
+      {% assign all_categories = site.posts | map: 'categories' | join: ',' | split: ',' | uniq | sort %}
+      {% for cat in all_categories %}
+        {% if cat != '' %}
+          <li><a href="{{ '/arquivo/?cat=' | append: cat | relative_url }}">{{ cat }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<!-- POSTS RECENTES -->
+<div class="sidebar-box">
+  <div class="sidebar-box-header"><span class="sym">></span> RECENTES</div>
+  <div class="sidebar-box-content">
+    <ul class="recent-list">
+      {% for post in site.posts limit:5 %}
+        <li>
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <span class="r-date">{{ post.date | date: "%d %b" }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    {% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}
+  </title>
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | truncate: 160 }}">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Special+Elite&family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a class="nav-brand" href="{{ '/' | relative_url }}">
+        {{ site.title }}<span class="cursor"></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="{{ '/' | relative_url }}"{% if page.url == '/' %} class="active"{% endif %}>Home</a></li>
+        <li><a href="{{ '/arquivo/' | relative_url }}"{% if page.url contains 'arquivo' %} class="active"{% endif %}>Arquivo</a></li>
+        <li><a href="{{ '/sobre/' | relative_url }}"{% if page.url contains 'sobre' %} class="active"{% endif %}>Sobre</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- WRAPPER -->
+  <div id="wrapper">
+    <main id="main">
+      {{ content }}
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar">
+      {% include sidebar.html %}
+    </aside>
+  </div>
+
+  <!-- STATUS BAR -->
+  <div id="statusbar">
+    <span>{{ site.title | upcase }} :: v1.0 :: ready.</span>
+    <span id="clock"></span>
+  </div>
+
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>
